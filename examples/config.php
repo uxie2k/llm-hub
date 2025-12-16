@@ -7,24 +7,20 @@
 
 return [
     'ai' => [
-        // Управляется через переменную окружения, по умолчанию 'gigachat'
-        'provider' => getenv('AI_PROVIDER') ?: 'gigachat',
+        'provider' => $_ENV['AI_PROVIDER'] ?? 'gigachat', // Берем из .env, по умолчанию gigachat
     ],
-
-    'openai' => [
-        // Мы просто берем значение. Если его нет, getenv вернет false.
-        'api_key' => getenv('OPENAI_API_KEY'),
-        'model' => 'gpt-4o',
-    ],
-
     'gigachat' => [
-        'credentials' => getenv('GIGACHAT_CREDENTIALS'),
+        'credentials' => $_ENV['GIGACHAT_CREDENTIALS'] ?? null,
         'model' => 'GigaChat:latest',
     ],
-
+    'openai' => [ // Настройки для других AI тоже могут быть здесь
+        'api_key' => $_ENV['OPENAI_API_KEY'] ?? null,
+    ],
     'history' => [
         'storage' => 'file',
-        // Путь теперь корректный, так как он находится в той же папке
-        'path' => __DIR__ . '/history_storage',
+        'path' => __DIR__ . '/../ai_history', // Путь от файла конфига
+    ],
+    'http_client' => [
+        'ssl_verify' => ($_ENV['APP_ENV'] ?? 'production') !== 'local', // Умное управление SSL
     ],
 ];
