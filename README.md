@@ -1,8 +1,8 @@
 # LLMHub: The Universal PHP AI Gateway
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/your-vendor/llm-hub.svg?style=flat-square)](https://packagist.org/packages/your-vendor/llm-hub)
-[![Total Downloads](https://img.shields.io/packagist/dt/your-vendor/llm-hub.svg?style=flat-square)](https://packagist.org/packages/your-vendor/llm-hub)
-[![License](https://img.shields.io/packagist/l/your-vendor/llm-hub.svg?style=flat-square)](https://github.com/your-vendor/llm-hub/blob/main/LICENSE)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/uxie2k/llm-hub.svg?style=flat-square)](https://packagist.org/packages/uxie2k/llm-hub)
+[![Total Downloads](https://img.shields.io/packagist/dt/uxie2k/llm-hub.svg?style=flat-square)](https://packagist.org/packages/uxie2k/llm-hub)
+[![License](https://img.shields.io/packagist/l/uxie2k/llm-hub.svg?style=flat-square)](https://github.com/uxie2k/llm-hub/blob/main/LICENSE)
 
 **LLMHub** — это гибкая, расширяемая PHP-библиотека для интеграции различных больших языковых моделей (LLM) в любой проект. Архитектура построена на принципах SOLID, что позволяет легко переключаться между AI-провайдерами и добавлять новых без изменения вашего кода.
 
@@ -38,12 +38,12 @@
     "require": {
         "php": ">=8.1",
         "vlucas/phpdotenv": "^5.5",
-        "your-vendor/llm-hub": "dev-main"
+        "uxie2k/llm-hub": "dev-main"
     },
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/your-vendor/llm-hub.git"
+            "url": "https://github.com/uxie2k/llm-hub.git"
         }
     ]
 }
