@@ -1,5 +1,5 @@
 {
-    "name": "your-vendor/llm-hub",
+    "name": "uxie2k/llm-hub",
     "description": "A SOLID, vendor-agnostic PHP library for integrating Large Language Models into any project.",
     "type": "library",
     "license": "MIT",
@@ -14,8 +14,8 @@
     ],
     "authors": [
         {
-            "name": "Your Name",
-            "email": "your.email@example.com"
+            "name": "Dmitry",
+            "email": "123@example.com"
         }
     ],
     "require": {
