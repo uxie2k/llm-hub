@@ -1,0 +1,12 @@
+# llm-hub/.gitignore
+/vendor/
+
+.env
+
+/examples/history_storage/
+/examples/app.log
+
+composer.lock
+
+.idea/
+.vscode/

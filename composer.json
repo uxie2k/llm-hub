@@ -1,0 +1,30 @@
+{
+    "name": "your-vendor/llm-hub",
+    "description": "A SOLID, vendor-agnostic PHP library for integrating Large Language Models into any project.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "ai",
+        "llm",
+        "chatbot",
+        "openai",
+        "gemini",
+        "gigachat",
+        "php"
+    ],
+    "authors": [
+        {
+            "name": "Your Name",
+            "email": "your.email@example.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.1",
+        "psr/log": "^1.0 || ^2.0 || ^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "LLMHub\\": "src/"
+        }
+    }
+}
