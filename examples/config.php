@@ -16,6 +16,10 @@ return [
     'openai' => [ // Настройки для других AI тоже могут быть здесь
         'api_key' => $_ENV['OPENAI_API_KEY'] ?? null,
     ],
+    'gemini' => [
+        'api_key' => isset($_ENV['GEMINI_API_KEY']) ? trim($_ENV['GEMINI_API_KEY']) : null,
+        'model' => 'gemini-pro',
+    ],
     'history' => [
         'storage' => 'file',
         'path' => __DIR__ . '/../ai_history', // Путь от файла конфига

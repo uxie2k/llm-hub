@@ -74,40 +74,45 @@ composer update
 composer require vlucas/phpdotenv
 ```
 
-# Возможные значения: openai, gigachat
-AI_PROVIDER=openai
+# --- Настройки окружения ---
+# Укажите 'local' для разработки, 'production' для боевого сервера
+APP_ENV=local
 
-# --- Ключи для провайдеров ---
-OPENAI_API_KEY="sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-GIGACHAT_CREDENTIALS="xxxxxxxxxxxxxxxxxBASE64xxxxxxxxxxxxxxxxx"
+# --- Настройки LLMHub ---
+# Провайдер по умолчанию (gigachat, openai)
+AI_PROVIDER=gemini
+
+# --- Ключи ---
+GIGACHAT_CREDENTIALS=""
+OPENAI_API_KEY=""
+GEMINI_API_KEY=""
 
 **Шаг 2: Создание конфигурационного файла**
 
 config/llmhub.php
 
 ```php
-<?php
-
 return [
-    // --- Главный переключатель ---
     'ai' => [
-        'provider' => getenv('AI_PROVIDER') ?: 'openai',
-    ],
-
-    // --- Секции настроек для каждого провайдера ---
-    'openai' => [
-        'api_key' => getenv('OPENAI_API_KEY'),
-        'model' => 'gpt-4o',
+        'provider' => $_ENV['AI_PROVIDER'] ?? 'gigachat', // Берем из .env, по умолчанию gigachat
     ],
     'gigachat' => [
-        'credentials' => getenv('GIGACHAT_CREDENTIALS'),
+        'credentials' => $_ENV['GIGACHAT_CREDENTIALS'] ?? null,
         'model' => 'GigaChat:latest',
     ],
-
-    // --- Настройки хранения истории ---
+    'openai' => [
+        'api_key' => $_ENV['OPENAI_API_KEY'] ?? null,
+    ],
+    'gemini' => [
+        'api_key' => isset($_ENV['GEMINI_API_KEY']) ? trim($_ENV['GEMINI_API_KEY']) : null,
+        'model' => 'gemini-pro',
+    ],
     'history' => [
         'storage' => 'file',
-        'path' => __DIR__ . '/../storage/ai_history', // Укажите путь к папке в вашем проекте
+        'path' => __DIR__ . '/../ai_history',
+    ],
+    'http_client' => [
+        'ssl_verify' => ($_ENV['APP_ENV'] ?? 'production') !== 'local',
     ],
 ];
 ```
@@ -115,37 +120,48 @@ return [
 **Шаг 3: Инициализация и использование бота**
 
 ```php
-<?php
-// 1. Подключаем автозагрузчик Composer
+
+// Подключаем Composer для автозагрузки всех классов
 require_once __DIR__ . '/vendor/autoload.php';
 
-// 2. Загружаем переменные из .env
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
-
-// 3. Импортируем необходимые классы
+// Импортируем классы, которые будем использовать
 use LLMHub\Factory\BotFactory;
 use LLMHub\Exception\LLMHubException;
 
-// 4. Загружаем конфигурацию
+// 1. ЗАГРУЗКА ОКРУЖЕНИЯ
+// Загружаем переменные из .env в суперглобальный массив $_ENV
+$dotenv = Dotenv\Dotenv::createUnsafeImmutable(__DIR__);
+$dotenv->load();
+
+// 2. ЗАГРУЗКА КОНФИГУРАЦИИ
+// Подключаем массив с настройками из отдельного файла
 $config = require __DIR__ . '/config/llmhub.php';
 
-try {
-    // 5. Создаем бота через фабрику
-    $factory = new BotFactory($config);
-    // Уникальный ID для каждого диалога (например, ID сессии пользователя)
-    $bot = $factory->create('user_session_123');
+// 3. ОСНОВНАЯ ЛОГИКА ПРИЛОЖЕНИЯ
+echo "<h1>Production-ready тест LLMHub с GigaChat...</h1>";
 
-    // 6. Отправляем запрос и получаем ответ
-    $prompt = "Привет! Расскажи интересный факт о PHP.";
+try {
+    // Создаем экземпляр фабрики, передав ей конфиг
+    $factory = new BotFactory($config);
+
+    // Фабрика сама создает и настраивает бота со всеми зависимостями
+    $bot = $factory->create('production_test_001');
+
+    $prompt = "Ты GigaChat. Напиши короткое и бодрое приветствие. Сообщи, что ты успешно подключился через профессионально написанную PHP-библиотеку.";
+    
+    echo "<b>Запрос:</b><p><i>" . htmlspecialchars($prompt) . "</i></p>";
+    
+    // Отправляем запрос и получаем ответ
     $response = $bot->chat($prompt);
 
-    echo $response->text;
+    echo "<b>Ответ от GigaChat:</b>";
+    echo "<div style='border: 1px solid #ccc; padding: 10px; background: #f0fff0;'>" . nl2br(htmlspecialchars($response->text)) . "</div>";
+    echo "<hr>Тест успешно завершен!";
 
 } catch (LLMHubException $e) {
-    // 7. Корректно обрабатываем ошибки
-    // Ловим только те исключения, которые относятся к нашей библиотеке
-    error_log("LLMHub Error: " . $e->getMessage());
-    die("Произошла ошибка в работе AI-сервиса. Попробуйте позже.");
+    // Единая точка обработки всех ошибок, связанных с библиотекой
+    echo "<h2 style='color: red;'>Произошла ошибка!</h2>";
+    echo "<b>Тип ошибки:</b> " . get_class($e) . "<br>";
+    echo "<b>Сообщение:</b> " . $e->getMessage();
 }
 ```
