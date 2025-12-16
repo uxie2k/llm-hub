@@ -1,6 +1,8 @@
 # LLMHub
 
 [![Latest Version](https://img.shields.io/packagist/v/uxie2k/llm-hub.svg)](https://packagist.org/packages/uxie2k/llm-hub)
+[![Total Downloads](https://img.shields.io/packagist/dt/uxie2k/llm-hub.svg)](https://packagist.org/packages/uxie2k/llm-hub)
+[![License](https://img.shields.io/packagist/l/uxie2k/llm-hub.svg)](https://github.com/uxie2k/llm-hub/blob/main/LICENSE)
 
 LLMHub — это гибкая, расширяемая PHP-библиотека для интеграции различных больших языковых моделей (LLM) в любой проект. Архитектура построена на принципах SOLID, что позволяет легко добавлять поддержку новых AI-провайдеров без изменения основного кода.
 
@@ -17,7 +19,8 @@ LLMHub — это гибкая, расширяемая PHP-библиотека 
 Установка через Composer:
 
 ```bash
-composer require uxie2k/llm-hub```
+composer require uxie2k/llm-hub
+```
 
 ## Использование
 
@@ -56,7 +59,6 @@ try {
 } catch (\LLMHub\Exception\LLMHubException $e) {
     // Обработка ошибок
     die("Произошла ошибка: " . $e->getMessage());
-}```
-
-## Использование
+}
+```
 
