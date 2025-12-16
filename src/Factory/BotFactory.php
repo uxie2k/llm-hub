@@ -5,6 +5,7 @@ namespace LLMHub\Factory;
 use LLMHub\AI\AiProviderInterface;
 use LLMHub\AI\Providers\OpenAIProvider;
 use LLMHub\AI\Providers\GigaChatProvider;
+use LLMHub\AI\Providers\GeminiProvider;
 use LLMHub\Bot\Bot;
 use LLMHub\Bot\History\Storage\FileStorage;
 use LLMHub\Bot\History\StorageInterface;
@@ -54,8 +55,10 @@ final class BotFactory
         switch ($providerName) {
             case 'openai':
                 return new OpenAIProvider($this->httpClient, $this->config, $this->logger);
-            case 'gigachat': // <-- ДОБАВЛЯЕМ НОВЫЙ БЛОК
+            case 'gigachat':
                 return new GigaChatProvider($this->httpClient, $this->config, $this->logger);
+            case 'gemini':
+                return new GeminiProvider($this->httpClient, $this->config, $this->logger);
             default:
                 throw new ConfigurationException("Unsupported AI provider: {$providerName}");
         }
