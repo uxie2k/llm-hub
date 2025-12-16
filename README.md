@@ -1,8 +1,16 @@
 # LLMHub: The Universal PHP AI Gateway
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/uxie2k/llm-hub.svg?style=flat-square)](https://packagist.org/packages/uxie2k/llm-hub)
-[![Total Downloads](https://img.shields.io/packagist/dt/uxie2k/llm-hub.svg?style=flat-square)](https://packagist.org/packages/uxie2k/llm-hub)
-[![License](https://img.shields.io/packagist/l/uxie2k/llm-hub.svg?style=flat-square)](https://github.com/uxie2k/llm-hub/blob/main/LICENSE)
+[![License](https://img.shields.io/github/license/uxie2k/llm-hub?style=flat-square)](https://github.com/uxie2k/llm-hub/blob/main/LICENSE)
+[![GitHub last commit](https://img.shields.io/github/last-commit/uxie2k/llm-hub?style=flat-square)](https://github.com/uxie2k/llm-hub/commits/main)
+[![GitHub issues](https://img.shields.io/github/issues/uxie2k/llm-hub?style=flat-square)](https://github.com/uxie2k/llm-hub/issues)
+[![GitHub stars](https://img.shields.io/github/stars/uxie2k/llm-hub?style=social)](https://github.com/uxie2k/llm-hub/stargazers)
+
+<!-- 
+    Packagist.org
+    
+    [![Latest Version on Packagist](https://img.shields.io/packagist/v/uxie2k/llm-hub.svg?style=flat-square)](https://packagist.org/packages/uxie2k/llm-hub)
+    [![Total Downloads](https://img.shields.io/packagist/dt/uxie2k/llm-hub.svg?style=flat-square)](https://packagist.org/packages/uxie2k/llm-hub)
+-->
 
 **LLMHub** — это гибкая, расширяемая PHP-библиотека для интеграции различных больших языковых моделей (LLM) в любой проект. Архитектура построена на принципах SOLID, что позволяет легко переключаться между AI-провайдерами и добавлять новых без изменения вашего кода.
 
