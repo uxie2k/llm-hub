@@ -82,12 +82,13 @@ composer require vlucas/phpdotenv
 ```
 
 # --- Настройки окружения ---
-# Укажите 'local' для разработки, 'production' для боевого сервера
-APP_ENV=local
+'local' для разработки, 
+'production' для боевого сервера
+APP_ENV=
 
 # --- Настройки LLMHub ---
-# Провайдер по умолчанию (gigachat, openai)
-AI_PROVIDER=gemini
+Провайдер (gigachat, openai, gemini)
+AI_PROVIDER=
 
 # --- Ключи ---
 GIGACHAT_CREDENTIALS=""
