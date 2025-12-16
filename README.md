@@ -42,7 +42,7 @@
 
 ```json
 {
-    "name": "your-company/my-cool-project",
+    "name": "company/website",
     "require": {
         "php": ">=8.1",
         "vlucas/phpdotenv": "^5.5",
