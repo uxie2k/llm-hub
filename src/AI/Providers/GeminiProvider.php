@@ -9,7 +9,7 @@ use LLMHub\Exception\ProviderException;
 final class GeminiProvider extends AbstractProvider
 {
     // Базовый URL для Gemini API
-    private const API_BASE_URL = 'https://generativelanguage.googleapis.com/v1beta/models/';
+    private const API_BASE_URL = 'https://generativelanguage.googleapis.com/v1/models/';
 
     public function chat(string $prompt, array $history = []): AiResponse
     {
