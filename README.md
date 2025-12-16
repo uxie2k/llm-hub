@@ -81,19 +81,19 @@ composer update
 composer require vlucas/phpdotenv
 ```
 
-# --- Настройки окружения ---
+--- Настройки окружения ---
 'local' для разработки, 
 'production' для боевого сервера
-APP_ENV=
+- APP_ENV=
 
-# --- Настройки LLMHub ---
+--- Настройки LLMHub ---
 Провайдер (gigachat, openai, gemini)
-AI_PROVIDER=
+- AI_PROVIDER=
 
-# --- Ключи ---
-GIGACHAT_CREDENTIALS=""
-OPENAI_API_KEY=""
-GEMINI_API_KEY=""
+--- Ключи ---
+- GIGACHAT_CREDENTIALS=""
+- OPENAI_API_KEY=""
+- GEMINI_API_KEY=""
 
 **Шаг 2: Создание конфигурационного файла**
 
